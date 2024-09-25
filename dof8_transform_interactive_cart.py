@@ -38,8 +38,8 @@ def update(val) -> None:
     axe.clear()
     axe.axis('equal')
     axe.grid(True)
-    axe.set_ylim(-3, 4)
-    axe.set_xlim(-3, 4)
+    axe.set_ylim(-2, 3)
+    axe.set_xlim(-2, 3)
 
     points = original_points
     transformed_points = np.array([cart_affine_point_transformation(new_transform_matrix, np.append(p, Z)) for p in points])
