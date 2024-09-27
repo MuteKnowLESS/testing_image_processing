@@ -8,7 +8,7 @@ COLORS = ['r', 'g', 'b', 'y', 'c']  # Colors for each point
 Z = 1
 
 # Original points of the square with z=1
-original_points = np.array([[0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1], [0, 0, 1]])
+original_points = np.array([[1, 1, 1], [2, 1, 1], [2, 2, 1], [1, 2, 1], [1, 1, 1]])
 
 # Identity matrix for initial transformation
 transform_matrix_i = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
@@ -29,14 +29,17 @@ def update(val) -> None:
     ax3d.clear()
     ax3d.set_box_aspect([1,1,1])
     ax3d.grid(True)
-    ax3d.set_xlim(-2, 3)
-    ax3d.set_ylim(-2, 3)
-    ax3d.set_zlim(-2, 3)
+    #ax3d.set_axis_off()
+    ax3d.set_xlim(0, 3)
+    ax3d.set_ylim(0, 3)
+    ax3d.set_zlim(0, 3)
 
     ax2d.clear()
     ax2d.grid(True)
-    ax2d.set_xlim(-2, 3)
-    ax2d.set_ylim(-2, 3)
+    ax2d.set_aspect('equal')
+    ax2d.set_axis_off()
+    # ax2d.set_xlim(-2, 3)
+    # ax2d.set_ylim(-2, 3)
 
     points = original_points
     transformed_points = np.array([cart_affine_point_transformation(new_transform_matrix, p) for p in points])
@@ -73,8 +76,8 @@ def update(val) -> None:
                   [original_2d_points[i, 1], transformed_2d_points[i, 1]], 'k--')
 
     # Create polygons for original and transformed shapes in 2D
-    original_polygon_2d = plt.Polygon(original_2d_points, closed=True, fill=None, edgecolor='r')
-    transformed_polygon_2d = plt.Polygon(transformed_2d_points, closed=True, fill=None, edgecolor='b')
+    original_polygon_2d = plt.Polygon(original_2d_points, closed=True, color = 'red', alpha=0.5)
+    transformed_polygon_2d = plt.Polygon(transformed_2d_points, closed=True, color = 'blue', alpha = 0.5)
     ax2d.add_patch(original_polygon_2d)
     ax2d.add_patch(transformed_polygon_2d)
 
