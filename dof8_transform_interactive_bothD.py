@@ -11,7 +11,9 @@ Z = 1
 original_points = np.array([[1, 1, 1], [2, 1, 1], [2, 2, 1], [1, 2, 1], [1, 1, 1]])
 
 # Identity matrix for initial transformation
-transform_matrix_i = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+transform_matrix_i = np.array([[1, 3, 2], [5, 4, 2], [0, 0, 1]])
+#transform_matrix_i = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+
 
 def cart_affine_point_transformation(t_mat: np.array, p: np.array) -> np.array:
     '''returns transformed point in cartesian form: (x,y,z)'''
